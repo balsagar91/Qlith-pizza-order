@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drink Menu</title>
+  <link rel="stylesheet" href="beverage.css" />
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.drink-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .drink-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.drink-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-image {
+  height: 360px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 170px;
+}
+
+
+.drink-info {
+  padding: 26px;
+  flex-grow: 1;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.title-row h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: white;
+  padding: 14px 16px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-btn {
+  background: #e4002b;
+  color: white;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #bb001f;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.drink-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .drink-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.drink-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.drink-info {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.title-row h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: white;
+  padding: 14px 16px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-btn {
+  background: #e4002b;
+  color: white;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #bb001f;
+}
+</style>
+<body>
+
+  <div class="drink-container">
+
+    <!-- Drink 1 -->
+    <div class="drink-card">
+      <div class="drink-image" style="background-image: url('image/c75f77f0-987b-45df-b976-12be349df9dc_CokeHomeProductV1.jpg');"></div>
+      <div class="drink-info">
+        <div class="title-row">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Coca Cola 475ml</h3>
+        </div>
+        <p class="desc">Sparkling and Refreshing Beverage.</p>
+      </div>
+      <div class="footer-row">
+        <span class="price">₹70</span>
+        <button class="add-btn">Add +</button>
+      </div>
+    </div>
+
+    <!-- Drink 2 -->
+    <div class="drink-card">
+      <div class="drink-image" style="background-image: url('image/28fe8f9d-0d4a-4549-aaee-7901431880d6_CokeZeroHomeProductV1.jpg');"></div>
+      <div class="drink-info">
+        <div class="title-row">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Coca Cola Zero Sugar 330ml</h3>
+        </div>
+        <p class="desc">Maximum Taste, Zero Sugar.</p>
+      </div>
+      <div class="footer-row">
+        <span class="price">₹70</span>
+        <button class="add-btn">Add +</button>
+      </div>
+    </div>
+
+    <!-- Drink 3 -->
+    <div class="drink-card">
+      <div class="drink-image" style="background-image: url('image/81691d54-b9e5-4b26-8f1b-c757e22dd43d_BNRatnagiriAlphonso-BEV0145-HomeProduct.jpg');"></div>
+      <div class="drink-info">
+        <div class="title-row">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>B Natural Alphonsos from Ratnagiri (300 ml)</h3>
+        </div>
+        <p class="desc">Alphonsos only from Ratnagiri with the Goodness of Fiber.</p>
+      </div>
+      <div class="footer-row">
+        <span class="price">₹75</span>
+        <button class="add-btn">Add +</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

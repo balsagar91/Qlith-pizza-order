@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Location</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="delivery-address-box">
+      <h3>Add New Delivery Address</h3>
+      <input type="text" id="new-address" placeholder="Enter your full address" style="width:100%;padding:10px;margin-bottom:10px;border-radius:6px;border:1px solid #ccc;">
+      <button onclick="saveNewAddress()" style="padding:10px 20px;border:none;background:#28a745;color:white;border-radius:5px;">Save Address</button>
+    </div>
+  </div>
+
+  <script>
+    function saveNewAddress() {
+      const newAddr = document.getElementById("new-address").value.trim();
+      if (!newAddr) {
+        alert("Please enter a valid address.");
+        return;
+      }
+
+      let addresses = JSON.parse(localStorage.getItem("savedAddresses")) || [];
+      addresses.push(newAddr);
+      localStorage.setItem("savedAddresses", JSON.stringify(addresses));
+      localStorage.setItem("location", newAddr); // Set as current
+      window.location.href = "cart.html"; // Go back to home
+    }
+  </script>
+</body>
+</html>

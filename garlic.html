@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garlic Breads</title>
+  <link rel="stylesheet" href="garlic..css" />
+</head>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.bread-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .bread-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bread-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.bread-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  padding: 150px;
+}
+
+.bread-info {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.bread-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.bread-title h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(to right, #f5f5f5, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.bread-footer {
+  background: #111;
+  color: white;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-btn {
+  background-color: #e4002b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #c10025;
+}
+
+</style>
+<body>
+
+  <div class="bread-container">
+
+    <!-- Garlic Bread 1 -->
+    <div class="bread-card">
+      <div class="bread-image" style="background-image: url('image/8414923f-7e8e-4552-aec4-697d54b63042_Classic_GB_side.webp');"></div>
+      <div class="bread-info">
+        <div class="bread-title">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Classic Stuffed Garlic Bread</h3>
+        </div>
+        <p class="desc">Freshly baked garlic bread with cheese, juicy corn & tangy jalapeno.</p>
+      </div>
+      <div class="bread-footer">
+        <span class="price">₹159</span>
+        <button class="add-btn">Add +</button>
+      </div>
+    </div>
+
+    <!-- Garlic Bread 2 -->
+    <div class="bread-card">
+      <div class="bread-image" style="background-image: url('image/d8fef862-36b4-4e50-a5dc-8af4bbf1ab71_FullsizeGarlicBreadwithcornFiery.jpg');"></div>
+      <div class="bread-info">
+        <div class="bread-title">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Korean Corn & Jalapeno Garlic Bread</h3>
+        </div>
+        <p class="desc">Freshly baked garlic bread infused with Korean Sweet Chili Sauce, Molten cheese, juicy corn & tangy jalapeno.</p>
+      </div>
+      <div class="bread-footer">
+        <span class="price">₹179</span>
+        <button class="add-btn">Add +</button>
+      </div>
+    </div>
+
+    <!-- Garlic Bread 3 -->
+    <div class="bread-card">
+      <div class="bread-image" style="background-image: url('image/ce7db1b1-64c7-4f77-a1ce-cc4997dd1876_FullsizeGarlicBreadwithcornkorean.jpg');"></div>
+      <div class="bread-info">
+        <div class="bread-title">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Fiery Corn & Jalapeno Garlic Bread</h3>
+        </div>
+        <p class="desc">Freshly baked garlic bread infused with Spicy Guntur Sauce, Molten cheese, juicy corn & tangy jalapeno.</p>
+      </div>
+      <div class="bread-footer">
+        <span class="price">₹179</span>
+        <button class="add-btn">Add +</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

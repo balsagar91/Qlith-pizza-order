@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Summary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box-section">
+      <h2>🎉 Order Summary</h2>
+      <p><strong>Delivery Address:</strong> <span id="show-address"></span></p>
+      <div id="order-items"></div>
+      <p><strong>Total:</strong> ₹<span id="total-amount"></span></p>
+      <button onclick="goHome()" style="margin-top:20px;">Order Confirm</button>
+    </div>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("orderDetails"));
+    const container = document.getElementById("order-items");
+    const total = document.getElementById("total-amount");
+    const addressEl = document.getElementById("show-address");
+
+    if (!data) {
+      container.innerHTML = "<p>No order found.</p>";
+    } else {
+      addressEl.textContent = data.address;
+      let totalPrice = 0;
+      data.items.forEach(item => {
+        const div = document.createElement("div");
+        div.innerHTML = `<p>${item.name} x ${item.qty} - ₹${item.price * item.qty}</p>`;
+        totalPrice += item.price * item.qty;
+        container.appendChild(div);
+      });
+      total.textContent = (totalPrice + totalPrice * 0.08).toFixed(2);
+    }
+
+    function goHome() {
+      localStorage.removeItem("cart");
+      window.location.href = "cart.html";
+    }
+  </script>
+</body>
+</html>

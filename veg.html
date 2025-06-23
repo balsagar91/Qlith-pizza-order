@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizza Menu</title>
+  <link rel="stylesheet" href="veg.css" />
+</head>
+<style>
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.pizza-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .pizza-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pizza-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.pizza-img {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.customize-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+}
+
+.pizza-details {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pizza-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.pizza-title h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-info strong {
+  font-size: 18px;
+  color: #111;
+}
+
+.price-info p {
+  font-size: 13px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.add-btn {
+  background-color: #e4002b;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #c10025;
+}
+
+</style>
+<body>
+
+  <div class="pizza-container">
+
+    <!-- Pizza Card 1 -->
+    <div class="pizza-card">
+      <div class="pizza-img" style="background-image: url('image/ace91efd-72bb-4e1f-ad3f-5d08cc168545_FullSizeCornCheese.jpg');">
+        <button class="customize-btn">Customise</button>
+      </div>
+      <div class="pizza-details">
+        <div class="pizza-title">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Corn & Cheese Volcano</h3>
+        </div>
+        <p class="desc">Centre loaded with Molten Cheese & topped with juicy Golden Corn<br><small>*Contains non-edible container under the Pizza.</small></p>
+        <div class="price-row">
+          <div class="price-info">
+            <strong>₹309</strong>
+            <p>Regular Plus | Cheese Volcano Crust</p>
+          </div>
+          <button class="add-btn">Add +</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pizza Card 2 -->
+    <div class="pizza-card">
+      <div class="pizza-img" style="background-image: url('image/05e8ba85-4444-4c19-b085-8012f1baf0b4_margherita_side.webp');">
+        <button class="customize-btn">Customise</button>
+      </div>
+      <div class="pizza-details">
+        <div class="pizza-title">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Margherita</h3>
+        </div>
+        <p class="desc">Classic delight with 100% real mozzarella cheese.</p>
+        <div class="price-row">
+          <div class="price-info">
+            <strong>₹109</strong>
+            <p>Regular | New Hand Tossed</p>
+          </div>
+          <button class="add-btn">Add +</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pizza Card 3 -->
+    <div class="pizza-card">
+      <div class="pizza-img" style="background-image: url('image/a52b70f2-01cb-42b8-ae4f-566df999115c_farmhouse_side.webp');">
+        <button class="customize-btn">Customise</button>
+      </div>
+      <div class="pizza-details">
+        <div class="pizza-title">
+          <img src="veg-icon.png" alt="veg" class="veg-icon" />
+          <h3>Farmhouse</h3>
+        </div>
+        <p class="desc">Delightful combination of onion, capsicum, tomato & grilled mushroom.</p>
+        <div class="price-row">
+          <div class="price-info">
+            <strong>₹259</strong>
+            <p>Regular | New Hand Tossed</p>
+          </div>
+          <button class="add-btn">Add +</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
