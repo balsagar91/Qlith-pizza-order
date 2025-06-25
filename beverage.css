@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.drink-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .drink-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.drink-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-image {
+  height: 360px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 170px;
+}
+
+
+.drink-info {
+  padding: 26px;
+  flex-grow: 1;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.title-row h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: white;
+  padding: 14px 16px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-btn {
+  background: #e4002b;
+  color: white;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #bb001f;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.drink-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .drink-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.drink-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.drink-info {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.veg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.title-row h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: white;
+  padding: 14px 16px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-btn {
+  background: #e4002b;
+  color: white;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #bb001f;
+}

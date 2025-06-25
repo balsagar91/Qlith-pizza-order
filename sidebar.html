@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Domino's Style Sidebar</title>
-  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <style>
-    body {
+  body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #fff;
+}
+
+.container {
+  display: flex;
 }
 
 .sidebar {
@@ -78,15 +82,6 @@
   color: gray;
 }
 
-
-
-
-
-
-.container {
-  display: flex;
-}
-
 .main-content {
   flex: 1;
   padding: 20px;
@@ -110,23 +105,6 @@
   background: #fff9f9;
   border-radius: 8px;
 }
-.apply-btn {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-width: 100px;
-height: 40px;
-}
-
-.apply-btn:hover {
-  background-color: darkred;
-}
-
-
 
 .deal img {
   width: 100%;
@@ -138,6 +116,206 @@ height: 40px;
   margin-top: 8px;
   font-weight: bold;
 }
+
+.apply-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+}
+
+.apply-btn:hover {
+  background-color: darkred;
+}
+
+
+
+/*track order*/
+
+.track-order-container {
+  max-width: 500px;
+  background: #fff;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.track-order-container h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-row input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-full {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-full input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.track-btn {
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.track-btn:hover {
+  background-color: darkred;
+}
+
+.track-result {
+  margin-top: 20px;
+  font-size: 16px;
+  color: green;
+}
+
+/*terms*/
+
+
+.terms-container {
+  max-width: 700px;
+  background: #fff;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.terms-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-body {
+  display: none;
+  padding: 0 15px 15px;
+  font-size: 15px;
+  color: #444;
+}
+
+.accordion-header.active + .accordion-body {
+  display: block;
+}
+
+.accordion-header .plus {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.feedback-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.step-bar {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.step {
+  font-weight: bold;
+  color: gray;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.step.active {
+  color: black;
+}
+
+.step.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #007bff;
+  border-radius: 50%;
+}
+
+.feedback-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.feedback-icon {
+  width: 100px;
+  opacity: 0.7;
+}
+
+.explore-btn {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+}
+
+
+
+
+
+
 </style>
 <body>
   <div class="container">
@@ -146,22 +324,21 @@ height: 40px;
       <div class="profile">
         <span class="icon">👤</span>
         <div>
-          <p id="loginStatus">Login for</p>
-          <p class="exclusive">Exclusive Offers</p>
+          <div id="loginStatus" class="exclusive">Login for<br>Exclusive Offers</div>
+          <a href="login.html">
+          <button id="loginBtn" class="login-btn">Login</button>
+          </a>
         </div>
-        <button id="loginBtn" class="login-btn">Login</button>
       </div>
-
       <ul class="menu">
         <li id="dealsLink">Deals & Offers</li>
-        <li>Track Current Order</li>
-        <li>Order History</li>
-        <li>Feedback</li>
-        <li>Terms & Conditions</li>
-        <li>Bulk Order</li>
-        <li>Nutritional Information</li>
+        <li id="trackOrderLink">Track Current Order</li>
+        <li id="orderHistoryLink">Order History</li>
+        <li id="feedbackLink">Feedback</li>
+        <li id="termsLink">Terms & Conditions</li>
+        <li id="bulkOrderLink">Bulk Order</li>
+        <li id="nutritionLink">Nutritional Information</li>
       </ul>
-
       <div class="version">V0.0.1</div>
     </div>
 
@@ -174,43 +351,55 @@ height: 40px;
           <div class="deal">
             <img src="https://i.pinimg.com/736x/6d/53/03/6d5303da0cb54cd0f22b74794717d10e.jpg" alt="Pizza Deal 1">
             <p>Buy 1 Get 1 Free</p>
-             <button id="applyBtn" class="apply-btn">apply</button>
+            <button class="apply-btn">Apply</button>
           </div>
-      
-       
-
           <div class="deal">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLy_sN4NxHujXbQoxpnEfi4K4vFMXMoAwGw&s" alt="Pizza Deal 2">
             <p>Flat 50% Off</p>
-             <button id="applyBtn" class="apply-btn">apply</button>
+            <button class="apply-btn">Apply</button>
           </div>
           <div class="deal">
             <img src="https://img.pikbest.com/templates/20240831/pizza-and-soft-drink-promotional-poster_10779554.jpg!w700wp" alt="Pizza Deal 3">
             <p>Free Drink with Pizza</p>
-             <button id="applyBtn" class="apply-btn">apply</button>
-
-             <ul class="menu">
-  <li id="dealsLink">Deals & Offers</li>
-  <li><a href="dashboard.html" style="text-decoration: none; color: inherit;">Go to Dashboard</a></li>
-  <!-- Add more menu items -->
-</ul>
-
+            <button class="apply-btn">Apply</button>
           </div>
         </div>
       </div>
+
+      <!-- Dynamic Sections -->
+      <div id="dynamicSection"></div>
     </div>
   </div>
 
-<script> document.addEventListener("DOMContentLoaded", () => {
+  
+</div>
 
-    if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "login.html";
-    return;
-  }
+<div class="feedback-section">
+  <div class="step-bar">
+    <div class="step active">Select Order</div>
+    <div class="step">Submit Feedback</div>
+  </div>
+
+  <div class="feedback-content">
+    <img src="https://cdn-icons-png.flaticon.com/512/5465/5465760.png" alt="No Orders" class="feedback-icon" />
+    <button class="explore-btn">EXPLORE MENU</button>
+  </div>
+</div>
+
+
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const loginStatus = document.getElementById("loginStatus");
   const dealsLink = document.getElementById("dealsLink");
   const dealsSection = document.getElementById("dealsSection");
+  const dynamicSection = document.getElementById("dynamicSection");
+
+  // Sidebar Links
+  const trackOrderLink = document.getElementById("trackOrderLink");
+  const orderHistoryLink = document.getElementById("orderHistoryLink");
+  const feedbackLink = document.getElementById("feedbackLink");
+  const nutritionLink = document.getElementById("nutritionLink");
 
   function updateLoginStatus() {
     const loggedIn = localStorage.getItem("isLoggedIn");
@@ -218,7 +407,7 @@ height: 40px;
       loginStatus.innerText = "Welcome Back!";
       loginBtn.innerText = "Logout";
     } else {
-      loginStatus.innerText = "Login for";
+      loginStatus.innerText = "Login for\nExclusive Offers";
       loginBtn.innerText = "Login";
     }
   }
@@ -235,11 +424,153 @@ height: 40px;
 
   dealsLink.addEventListener("click", () => {
     dealsSection.classList.toggle("hidden");
+    dynamicSection.innerHTML = '';
+  });
+
+  // Dynamic content
+  function showContent(title, contentKey) {
+    dealsSection.classList.add("hidden");
+    const savedContent = localStorage.getItem(contentKey) || `<p>No ${title} yet!</p>`;
+    dynamicSection.innerHTML = `<h2>${title}</h2><div>${savedContent}</div>`;
+  }
+
+  trackOrderLink.addEventListener("click", () => {
+trackOrderLink.addEventListener("click", () => {
+  dealsSection.classList.add("hidden");
+
+  dynamicSection.innerHTML = `
+    <div class="track-order-container">
+      <h2>Track Your Order</h2>
+      <div class="input-row">
+        <span style="padding: 10px; background: #eee; border: 1px solid #ccc; border-radius: 5px;">+91</span>
+        <input type="text" id="mobileInput" placeholder="Mobile Number">
+      </div>
+      <div class="input-full">
+        <input type="text" id="orderIdInput" placeholder="Order ID">
+      </div>
+      <button class="track-btn" id="submitTrack">SUBMIT</button>
+      <div id="trackOutput" class="track-result"></div>
+    </div>
+  `;
+
+  // Show existing stored data if available
+  const savedTrack = localStorage.getItem("trackOrder");
+  if (savedTrack) {
+    document.getElementById("trackOutput").innerHTML = savedTrack;
+  }
+
+  document.getElementById("submitTrack").addEventListener("click", () => {
+    const mobile = document.getElementById("mobileInput").value.trim();
+    const orderId = document.getElementById("orderIdInput").value.trim();
+
+    if (!mobile || !orderId) {
+      alert("Please enter both Mobile Number and Order ID.");
+      return;
+    }
+
+    const resultHTML = `<p>📱 Mobile: +91-${mobile}</p><p>🧾 Order ID: ${orderId}</p><p>📦 Status: Order placed successfully!</p>`;
+    document.getElementById("trackOutput").innerHTML = resultHTML;
+    localStorage.setItem("trackOrder", resultHTML);
+  });
+});
+    
+  });
+const termsLink = document.getElementById("termsLink");
+
+  orderHistoryLink.addEventListener("click", () => {
+    showContent("Order History", "orderHistory");
+  });
+
+
+
+  feedbackLink.addEventListener("click", () => {
+    showContent("Feedback", "feedback");
+    const feedbackLink = document.getElementById("feedbackLink");
+
+feedbackLink.addEventListener("click", () => {
+  dynamicSection.innerHTML = `
+    <div class="feedback-section">
+      <div class="step-bar">
+        <div class="step active">Select Order</div>
+        <div class="step">Submit Feedback</div>
+      </div>
+      <div class="feedback-content">
+        <img src="https://cdn-icons-png.flaticon.com/512/5465/5465760.png" alt="No Orders" class="feedback-icon" />
+        <button class="explore-btn">EXPLORE MENU</button>
+      </div>
+    </div>
+  `;
+});
+
+  });
+
+  termsLink.addEventListener("click", () => {
+  dealsSection.classList.add("hidden");
+
+  dynamicSection.innerHTML = `
+    <div class="terms-container">
+      <h2 class="terms-title">Disclaimer</h2>
+      <p style="font-size: 15px; color: #444; margin-bottom: 20px;">
+        By using this platform, you agree to our terms and conditions including but not limited to our privacy policy, delivery policy, and refund terms. Please read them carefully before proceeding with your order. All orders are subject to availability and confirmation by the store. Delivery timelines may vary based on location and order volume. We reserve the right to cancel or modify any order based on system or operational constraints.
+      </p>
+    
+
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">Everyday Value Offers <span class="plus">+</span></button>
+          <div class="accordion-body">Get amazing deals on every day value combos.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Order Delivery <span class="plus">+</span></button>
+          <div class="accordion-body">We deliver pizzas within 30 minutes or it's free*</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Menu <span class="plus">+</span></button>
+          <div class="accordion-body">Menu items are subject to availability in your area.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Modify / Cancel the Online Order <span class="plus">+</span></button>
+          <div class="accordion-body">You can modify your order within 5 minutes of placing it.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Late Night Delivery <span class="plus">+</span></button>
+          <div class="accordion-body">Late night delivery is available till 1:00 AM in select locations.</div>
+        </div>
+        <!-- Add more items here -->
+      </div>
+    </div>
+  `;
+
+  // Add toggle logic after rendering
+  document.querySelectorAll(".accordion-header").forEach(header => {
+    header.addEventListener("click", () => {
+      const isActive = header.classList.contains("active");
+      document.querySelectorAll(".accordion-header").forEach(h => h.classList.remove("active"));
+      document.querySelectorAll(".accordion-body").forEach(b => b.style.display = "none");
+      document.querySelectorAll(".plus").forEach(p => p.innerText = "+");
+
+      if (!isActive) {
+        header.classList.add("active");
+        header.nextElementSibling.style.display = "block";
+        header.querySelector(".plus").innerText = "−";
+      }
+    });
+  });
+});
+
+  nutritionLink.addEventListener("click", () => {
+    showContent("Nutritional Information", "nutrition");
+    
   });
 
   updateLoginStatus();
 });
-</script>
-  
+
+
+
+
+
+ </script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coupons</title>
+  <link rel="stylesheet" href="offer.css" />
+</head>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #f2f2f5;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.back-arrow {
+  font-size: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.coupon-container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.coupon-card {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  border: 1px dashed #ccc;
+}
+
+.coupon-left {
+  padding: 16px;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  background-color: #0056b3;
+  color: white;
+  font-size: 12px;
+  padding: 4px 6px;
+  display: inline-block;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.code {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+  border: 1px dashed #888;
+  display: inline-block;
+  padding: 4px 6px;
+}
+
+.description {
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.details {
+  color: #007bff;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.coupon-right {
+  background-color: #fff;
+  width: 35%;
+  border-left: 1px dotted #ddd;
+  text-align: center;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.save-text {
+  font-size: 13px;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.apply-btn {
+  background-color: #e4002b;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>
+<body>
+
+<header class="header">
+  <span class="back-arrow" onclick="history.back()">&#8592;</span>
+  <h2>Coupons</h2>
+</header>
+
+<main class="coupon-container">
+  <div class="coupon-card">
+    <div class="coupon-left">
+      <div class="badge">OFF</div>
+      <div class="code">PIZZA30</div>
+      <p class="description">Up to ₹30 Off on orders of ₹200 or more</p>
+      <a href="#" class="details">More details ▼</a>
+    </div>
+    <div class="coupon-right">
+      <p class="save-text">Save up to<br><strong>₹30 with this offer</strong></p>
+      <button class="apply-btn">Apply</button>
+    </div>
+  </div>
+
+  <div class="coupon-card">
+    <div class="coupon-left">
+      <div class="code">PARTY15</div>
+      <p class="description">Up to ₹300 off on orders worth ₹2000 or more</p>
+      <a href="#" class="details">More details ▼</a>
+    </div>
+    <div class="coupon-right">
+      <p class="save-text">Save up to<br><strong>₹300 with this offer</strong></p>
+      <button class="apply-btn">Apply</button>
+    </div>
+  </div>
+
+  <div class="coupon-card">
+    <div class="coupon-left">
+      <div class="code">PARTY20</div>
+      <p class="description">Up to ₹500 off on orders worth ₹2500 or more</p>
+      <a href="#" class="details">More details ▼</a>
+    </div>
+    <div class="coupon-right">
+      <p class="save-text">Save up to<br><strong>₹500 with this offer</strong></p>
+      <button class="apply-btn">Apply</button>
+    </div>
+  </div>
+
+  <div class="coupon-card">
+    <div class="coupon-left">
+      <div class="code">PARTY25</div>
+      <p class="description">Up to ₹750 Off on orders worth ₹3000 or more</p>
+      <a href="#" class="details">More details ▼</a>
+    </div>
+    <div class="coupon-right">
+      <p class="save-text">Save up to<br><strong>₹750 with this offer</strong></p>
+      <button class="apply-btn">Apply</button>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

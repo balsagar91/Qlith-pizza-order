@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domino's Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #fff;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .profile-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .location-banner, .service-tabs, .offers-container, .craving-section, .whats-new, .bestsellers-section {
+      padding: 20px;
+    }
+
+    .offer-title {
+      padding: 0 20px;
+    }
+
+    .offer-card {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      margin: 10px 0;
+      background: #e0e0e0;
+      border-radius: 8px;
+    }
+
+    .offer-card.blue {
+      background-color: #cce5ff;
+    }
+
+    .offer-card.orange {
+      background-color: #ffe0b2;
+    }
+
+    .craving-container, .new-items {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+    }
+
+    .item img, .banner-card img {
+      width: 150px;
+      height: 100px;
+      border-radius: 8px;
+    }
+
+    .item p {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    /* ===== Login Modal ===== */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 9998;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .modal input[type="tel"],
+    .modal input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .modal button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background: #0078ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .modal ul {
+      padding-left: 20px;
+    }
+
+    .otp-inputs {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .otp-inputs input {
+      width: 40px;
+      padding: 8px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .terms {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .terms a {
+      color: #0078ff;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .input-phone {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .input-phone span {
+      padding: 8px;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .input-phone input {
+      flex: 1;
+    }
+
+    .crown-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .crown-icon {
+      color: gold;
+      font-size: 20px;
+    }
+
+    .line {
+      flex: 1;
+      height: 1px;
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="location">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>No Location</span>
+      <i class="fas fa-caret-down"></i>
+    </div>
+    <div class="profile-icon">
+      <i class="fas fa-user"></i>
+    </div>
+  </div>
+
+  <!-- REST OF HOMEPAGE CONTENT -->
+  <h2 class="offer-title">Offers for You</h2>
+  <div class="offers-container">
+    <div class="offer-card blue">
+      <div>
+        <h3>₹30 OFF</h3>
+        <p>On orders above ₹200</p>
+      </div>
+      <button>View</button>
+    </div>
+    <div class="offer-card orange">
+      <div>
+        <h3>₹300 OFF</h3>
+        <p>On orders above ₹2000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRAVINGS SECTION -->
+  <section class="craving-section">
+    <h2>What are you craving for?</h2>
+    <div class="craving-container">
+      <div class="item"><img src="image/cheeseburst.jpg" alt=""><p>Cheese Burst</p></div>
+      <div class="item"><img src="image/garlicbread.jpg" alt=""><p>Garlic Bread</p></div>
+      <div class="item"><img src="image/vegpizza.jpg" alt=""><p>Veg Pizza</p></div>
+    </div>
+  </section>
+
+  <!-- WHATS NEW -->
+  <section class="whats-new">
+    <h2>What’s New</h2>
+    <div class="new-items">
+      <div class="banner-card"><img src="image/new1.jpg" alt=""></div>
+      <div class="banner-card"><img src="image/new2.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="bestsellers-section">
+    <div class="bestsellers-header">
+      <div class="crown-line">
+        <span class="line"></span>
+        <i class="fas fa-crown crown-icon"></i>
+        <span class="line"></span>
+      </div>
+      <h2>Top 10 Bestsellers</h2>
+    </div>
+  </section>
+
+  <!-- OVERLAY -->
+  <div id="overlay"></div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal" id="loginContainer">
+    <img src="https://pizzaonline.dominos.co.in/postorder-ui/images/appLogo@2x.png" class="logo" alt="Logo">
+    <h2>Login to unlock awesome benefits</h2>
+    <ul>
+      <li>🎯 Personalized Offers</li>
+      <li>⭐ Loyalty Rewards</li>
+      <li>💳 Easy Payments</li>
+    </ul>
+    <label>Mobile Number</label>
+    <div class="input-phone">
+      <span>+91</span>
+      <input type="tel" id="phone" maxlength="10" placeholder="Enter 10-digit number">
+    </div>
+    <button id="sendOtpBtn">Send OTP</button>
+    <p class="terms">By continuing, you agree to our <a href="#">Terms & Conditions</a></p>
+  </div>
+
+  <!-- OTP MODAL -->
+  <div class="modal" id="otpContainer">
+    <h3>OTP Verification</h3>
+    <p>OTP sent to <span id="displayPhone"></span> <a href="#" id="changeNumber">Change</a></p>
+    <div class="otp-inputs">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+    <p>Resend OTP in <span id="timer">30</span>s</p>
+    <button id="loginBtn">Login</button>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const profileIcon = document.querySelector('.profile-icon');
+    const loginContainer = document.getElementById('loginContainer');
+    const otpContainer = document.getElementById('otpContainer');
+    const overlay = document.getElementById('overlay');
+    const sendOtpBtn = document.getElementById('sendOtpBtn');
+    const phoneInput = document.getElementById('phone');
+    const displayPhone = document.getElementById('displayPhone');
+    const loginBtn = document.getElementById('loginBtn');
+
+    profileIcon.addEventListener('click', () => {
+      loginContainer.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    sendOtpBtn.addEventListener('click', () => {
+      const phone = phoneInput.value;
+      if (phone.length === 10) {
+        loginContainer.style.display = 'none';
+        otpContainer.style.display = 'block';
+        displayPhone.innerText = '+91 ' + phone;
+      } else {
+        alert('Enter a valid 10-digit number.');
+      }
+    });
+
+    loginBtn.addEventListener('click', () => {
+      otpContainer.style.display = 'none';
+      overlay.style.display = 'none';
+      alert('Logged in successfully!');
+    });
+
+    document.getElementById('changeNumber').addEventListener('click', (e) => {
+      e.preventDefault();
+      otpContainer.style.display = 'none';
+      loginContainer.style.display = 'block';
+    });
+
+    overlay.addEventListener('click', () => {
+      loginContainer.style.display = 'none';
+      otpContainer.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

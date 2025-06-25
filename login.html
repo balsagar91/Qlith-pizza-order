@@ -1,274 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Domino's Clone</title>
+  <meta charset="UTF-8">
+  <title>Domino's Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #f8f8f8;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      z-index: 9999;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    body {
+      background-color: #f6f6f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: 9998;
+    .login-container, .otp-container {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 10px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeIn 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      text-align: left;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      text-align: left;
     }
 
     .input-phone {
       display: flex;
       align-items: center;
-      gap: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 8px;
     }
 
     .input-phone span {
-      padding: 8px;
-      background: #eee;
-      border: 1px solid #ccc;
-      border-radius: 5px 0 0 5px;
+      margin-right: 8px;
+      color: #333;
+      font-size: 15px;
     }
 
     .input-phone input {
+      border: none;
+      outline: none;
+      font-size: 16px;
       flex: 1;
-      padding: 8px;
     }
 
-    .modal input[type="text"],
-    .modal input[type="tel"] {
+    button {
       width: 100%;
-      padding: 8px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .modal button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 15px;
-      background: #0078ff;
+      padding: 12px;
+      background-color: #006491;
       color: white;
       border: none;
       border-radius: 6px;
+      font-size: 16px;
+      margin-top: 20px;
       cursor: pointer;
+    }
+
+    .terms {
+      font-size: 12px;
+      color: #888;
+      margin-top: 12px;
+    }
+
+    .terms a {
+      color: #006491;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .otp-container {
+      display: none;
     }
 
     .otp-inputs {
       display: flex;
       justify-content: space-between;
-      margin-top: 10px;
+      margin: 20px 0;
     }
 
     .otp-inputs input {
       width: 40px;
-      padding: 8px;
+      height: 45px;
+      font-size: 22px;
       text-align: center;
-      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
-    .terms {
-      font-size: 12px;
-      margin-top: 10px;
+    #resendTimer {
+      font-size: 13px;
+      color: #666;
     }
 
-    .terms a {
-      color: #0078ff;
-      text-decoration: none;
+    #changeNumber {
+      margin-left: 6px;
+      color: #006491;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
     }
 
-    .logo {
-      width: 100px;
-      display: block;
-      margin: 0 auto 10px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .skip-btn {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: #006491;
+      font-weight: bold;
+      font-size: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .skip-btn:hover {
+      color: #004a6e;
     }
   </style>
 </head>
 <body>
-
-  <div id="overlay"></div>
-
-  <!-- Login Modal -->
-  <div class="modal" id="loginContainer">
-    <img src="https://pizzaonline.dominos.co.in/postorder-ui/images/appLogo@2x.png" class="logo" alt="Logo">
+  <div class="login-container" id="loginContainer">
+    <a href="home.html" class="skip-btn">Skip</a>
+    <img src="https://pizzaonline.dominos.co.in/postorder-ui/images/appLogo@2x.png" class="logo" alt="Domino's Logo">
     <h2>Login to unlock awesome benefits</h2>
     <ul>
       <li>🎯 Personalized Offers</li>
       <li>⭐ Loyalty Rewards</li>
       <li>💳 Easy Payments</li>
     </ul>
-    <label>Mobile Number</label>
+    <label for="phone">Mobile Number</label>
     <div class="input-phone">
       <span>+91</span>
-      <input type="tel" id="phone" maxlength="10" placeholder="Enter 10-digit number">
+      <input type="tel" id="phone" maxlength="10" placeholder="Enter 10-digit mobile number">
     </div>
-    <button id="sendOtpBtn">Send OTP</button>
-    <p class="terms">By continuing, you agree to our <a href="#">Terms & Conditions</a></p>
+    <button onclick="sendOTP()">Send OTP</button>
+    <p class="terms">By going forward you accept our <a href="#">Terms & Conditions</a></p>
   </div>
 
-  <!-- OTP Modal -->
-  <div class="modal" id="otpContainer">
+  <div class="otp-container" id="otpContainer">
     <h3>OTP Verification</h3>
-    <p>OTP sent to <span id="displayPhone"></span> <a href="#" id="changeNumber">Change</a></p>
+    <p>OTP has been sent to <span id="displayPhone"></span><span id="changeNumber" onclick="changeNumber()"> Change</span></p>
     <div class="otp-inputs">
-      <input type="text" maxlength="1" class="otp-box">
-      <input type="text" maxlength="1" class="otp-box">
-      <input type="text" maxlength="1" class="otp-box">
-      <input type="text" maxlength="1" class="otp-box">
-      <input type="text" maxlength="1" class="otp-box">
-      <input type="text" maxlength="1" class="otp-box">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
     </div>
-    <p>Resend OTP in <span id="timer">30</span>s</p>
-    <p>Didn't get OTP? <button id="resendOtpBtn" style="color:#0078ff; background:none; border:none; cursor:pointer;">Resend OTP</button></p>
-    <button id="loginBtn">Login</button>
-
+    <p id="resendTimer">Resend OTP in <span id="timer">30</span>s</p>
+    <button onclick="verifyOTP()">Login</button>
   </div>
 
   <script>
-    const loginContainer = document.getElementById('loginContainer');
-    const otpContainer = document.getElementById('otpContainer');
-    const overlay = document.getElementById('overlay');
-    const sendOtpBtn = document.getElementById('sendOtpBtn');
-    const phoneInput = document.getElementById('phone');
-    const displayPhone = document.getElementById('displayPhone');
-    const loginBtn = document.getElementById('loginBtn');
-    const changeNumber = document.getElementById('changeNumber');
-    const resendOtpBtn = document.getElementById('resendOtpBtn');
-    const timerElement = document.getElementById('timer');
+    function sendOTP() {
+      const phone = document.getElementById('phone').value;
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit number.");
+        return;
+      }
+      localStorage.setItem('mobile', phone);
+      document.getElementById('displayPhone').innerText = "+91-" + phone;
+      document.getElementById('loginContainer').style.display = 'none';
+      document.getElementById('otpContainer').style.display = 'block';
+      startTimer();
+    }
 
-    let countdown;
+    function verifyOTP() {
+      const inputs = document.querySelectorAll('.otp-inputs input');
+      let enteredOTP = "";
+      inputs.forEach(input => enteredOTP += input.value);
 
-    function startTimer(seconds) {
-      let timeLeft = seconds;
-      timerElement.textContent = timeLeft;
-      countdown = setInterval(() => {
+      if (enteredOTP === "123456") {
+        const phone = localStorage.getItem('mobile');
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('mobile', phone);
+        alert("✅ Login Successful");
+        window.location.href = "sidebar.html";
+      } else {
+        alert("❌ Invalid OTP");
+        inputs.forEach(input => input.value = "");
+      }
+    }
+
+    function changeNumber() {
+      document.getElementById('otpContainer').style.display = 'none';
+      document.getElementById('loginContainer').style.display = 'block';
+    }
+
+    function startTimer() {
+      let timeLeft = 30;
+      document.getElementById("resendTimer").innerHTML = `Resend OTP in <span id="timer">${timeLeft}</span>s`;
+      let countdown = setInterval(() => {
         timeLeft--;
-        timerElement.textContent = timeLeft;
+        document.getElementById("timer").innerText = timeLeft;
         if (timeLeft <= 0) {
           clearInterval(countdown);
-          resendOtpBtn.disabled = false;
+          document.getElementById("resendTimer").innerHTML = `<button onclick="sendOTP()">Resend OTP</button>`;
         }
       }, 1000);
     }
 
-    function sendOTP(phone) {
-      // 👇 Replace with real API Key and phone number handling
-      console.log("Sending OTP to:", phone);
-
-      // Fast2SMS Example (simulated)
-      fetch("https://www.fast2sms.com/dev/bulkV2", {
-        method: "POST",
-        headers: {
-          "Authorization": "dZuIPgDh31n4saEvCebym89tX5W2SpYUQlHcBRoqrGVOf6wjA7GXLsdmtvKiB4FANYPgCZhjrq63RVM7", // Replace with real key
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          route: "otp",
-          variables_values: "123456", // demo OTP
-          numbers: phone
-        })
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log("OTP sent successfully:", data);
-      })
-      .catch(err => {
-        console.error("Error sending OTP:", err);
+    document.querySelectorAll('.otp-inputs input').forEach((input, index, arr) => {
+      input.addEventListener('input', () => {
+        if (input.value.length && index < arr.length - 1) arr[index + 1].focus();
       });
-    }
-
-const otp = Math.floor(100000 + Math.random() * 900000);
-    sendOtpBtn.addEventListener('click', () => {
-      const phone = phoneInput.value;
-      if (phone.length === 10) {
-        loginContainer.style.display = 'none';
-        otpContainer.style.display = 'block';
-        overlay.style.display = 'block';
-        displayPhone.innerText = '+91 ' + phone;
-        resendOtpBtn.disabled = true;
-        startTimer(30);
-        sendOTP(phone);
-      } else {
-        alert('Enter a valid 10-digit number.');
-      }
     });
-
-    resendOtpBtn.addEventListener('click', () => {
-      const phone = phoneInput.value;
-      resendOtpBtn.disabled = true;
-      startTimer(30);
-      sendOTP(phone);
-    });
-
-    loginBtn.addEventListener('click', () => {
-      alert("Login Successful!");
-      window.location.href = "home.html";
-    });
-    const profileIcon = document.getElementById('profileIcon');
-
-loginBtn.addEventListener('click', () => {
-  alert("Login Successful!");
-
-  // Hide modal
-  otpContainer.style.display = 'none';
-  overlay.style.display = 'none';
-
-  // Change icon to check-circle
-  if (profileIcon) {
-    profileIcon.classList.remove('fa-user');
-    profileIcon.classList.add('fa-check-circle');
-    profileIcon.style.color = 'green';
-  }
-
-  
-});
-localStorage.setItem("isLoggedIn", "true");
-window.location.href = "sidebar.html";
-
-
-
-    changeNumber.addEventListener('click', (e) => {
-      e.preventDefault();
-      otpContainer.style.display = 'none';
-      loginContainer.style.display = 'block';
-    });
-
-    overlay.addEventListener('click', () => {
-      loginContainer.style.display = 'none';
-      otpContainer.style.display = 'none';
-      overlay.style.display = 'none';
-    });
-
-    window.onload = () => {
-      loginContainer.style.display = 'block';
-      overlay.style.display = 'block';
-    };
-    function logout() {
-  localStorage.removeItem('isLoggedIn');
-  location.reload(); // refresh to reset state
-}
-
   </script>
-  <script src="login.js"></script>
 </body>
 </html>

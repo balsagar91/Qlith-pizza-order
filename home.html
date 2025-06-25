@@ -16,8 +16,8 @@
       <p class="location-warning">Exact Location Required!</p>
     </div>
     <div class="profile-icon">
-       <a href="login.html">
-      <i class="fas fa-user" id="profileicon"></i>
+       <a href="login.html" class="profile-icon">
+      <i class="fas fa-user"></i>
       </a>
 
     </div>
@@ -35,42 +35,49 @@
         <p>for seamless delivery</p>
       </div>
     </div>
-    <button class="detect-btn">Detect location</button>
+    <button class="detect-btn">Detect Location</button>
+<div class="location-warning" style="display:none; color: red;">Unable to detect location</div>
+
 
   </div>
 
 
 
     <div class="service-tabs">
-    <div class="tab active">
+    <a href="delivery.html" class="tab active">
       <strong>Delivery</strong>
       <div class="sub">NOW</div>
-    </div>
-    <div class="tab">
-      <strong>Takeaway</strong>
-      <div class="sub">Select Store</div>
-    </div>
-    <div class="tab">
-      <strong>Dine-in</strong>
-      <div class="sub">Select Store</div>
-    </div>
+ </a>
+     <div class="tab" onclick="redirectToTakeaway()">
+      <a href="takeway.html">
+  <strong>Takeaway</strong>
+  <div class="sub">Select Store</div>
+  </a>
+</div>
+   <div class="tab">
+    <a href="dinein.html">
+    <strong>Dine-in</strong>
+    <div class="sub">Select Store</div>
+    </a>
   </div>
-
-
-
+</div>
 
    <h2 class="offer-title">Offers for you</h2>
 
   <div class="offers-container">
+    
     <div class="offer-card blue">
+      
       <div class="offer-info">
         <i class="fas fa-certificate"></i>
+        
         <div>
           <h3>Get ₹30 OFF</h3>
           <p>Up to ₹30 Off on orders of ₹200 or more</p>
         </div>
       </div>
-      <button class="view-btn">View</button>
+     <button class="view-btn" onclick="location.href='home.html'">View</button>
+
     </div>
 
     <div class="offer-card orange">
@@ -79,6 +86,7 @@
         <div>
           <h3>Get ₹300 Off</h3>
           <p>Up to ₹300 off on orders worth ₹2000 or...</p>
+          
         </div>
       </div>
     </div>
@@ -89,8 +97,11 @@
     <h2>What are you craving for?</h2>
     <div class="craving-container">
       <div class="item">
+       
+      </div>
+       <div class="item">
         <img src="image/a7b68274-6fdc-47dd-b99f-5af841f3a481_BigBigPizza.png" alt="Big Big Pizza" />
-        <a href="bigpizza.html"><p>Big Big Pizza</p></a>
+       <a href="bigpizza.html">Big Big Pizza</a>
       </div>
       <div class="item">
         <img src="image/4c07b4af-5add-4114-ba45-5c854928a9ad_ChickenBurst.png" alt="Chicken Burst" />
@@ -131,7 +142,7 @@
 
    <section class="whats-new">
     <h2>What’s New</h2>
-    <div class="new-items">
+    <div class="new-items" id="whatsNewSlider">
       <div class="banner-card">
         <img src="image/Sunday_Special_offers_AC_202410201729399304_202410211729485978_202410221729573259_202411201732090902_202412261735198159_202503181742280842_202503181742280870.jpg" alt="Big Big Pizza" />
       </div>
@@ -172,7 +183,9 @@
 
 
     <section class="products-section">
+      <div></div>
     <div class="product-card">
+      
       <div class="badge">Domino's<br><strong>TOP 10</strong></div>
       <img src="image/05e8ba85-4444-4c19-b085-8012f1baf0b4_margherita_side.webp" alt="Margherita">
       <div class="product-info">
@@ -184,7 +197,7 @@
             <strong>₹109</strong><br>
             <span>Regular | New Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
+                <button class="add-btn">Add +</button>
         </div>
       </div>
     </div>
@@ -202,8 +215,8 @@
             <strong>₹259</strong><br>
             <span>Regular | New Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
-        </div>
+            <button class="add-btn">Add +</button>
+
       </div>
     </div>
 
@@ -216,11 +229,11 @@
         <p>Delightful combination of onion, capsicum, tomato & grilled mushroom.</p>
         <div class="bottom">
           <div class="price">
-            <strong>₹259</strong><br>
+            <strong>₹289</strong><br>
             <span>Regular | New Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
-        </div>
+         <button class="add-btn">Add +</button>
+
       </div>
     </div>
 
@@ -233,10 +246,11 @@
         <p>Delightful combination of onion, capsicum, tomato & grilled mushroom.</p>
         <div class="bottom">
           <div class="price">
-            <strong>₹259</strong><br>
+            <strong>₹269</strong><br>
             <span>Regular | New Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
+           <button class="add-btn">Add +</button>
+
         </div>
       </div>
     </div>
@@ -254,7 +268,7 @@
             <strong>₹299</strong><br>
             <span>Regular | New Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
+                <button class="add-btn">Add +</button>
         </div>
       </div>
     </div>
@@ -272,7 +286,7 @@
             <strong>₹89</strong><br>
             <span>Regular | Classic Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
+              <button class="add-btn">Add +</button>
         </div>
       </div>
     </div>
@@ -290,7 +304,7 @@
             <strong>69</strong><br>
             <span>Regular | Classic Hand Tossed</span>
           </div>
-          <button class="add-btn">Add +</button>
+               <button class="add-btn">Add +</button>
         </div>
       </div>
     </div>
@@ -306,7 +320,7 @@
         <p>Delightful combination of onion, capsicum, tomato & grilled mushroom.</p>
         <div class="bottom">
           <div class="price">
-            <strong>109</strong><br>
+            <strong>119</strong><br>
             <!-- <span>Regular | Classic Hand Tossed</span> -->
           </div>
           <button class="add-btn">Add +</button>
@@ -327,13 +341,102 @@
             <strong>49</strong><br>
             <!-- <span>Regular | Classic Hand Tossed</span> -->
           </div>
-          <button class="add-btn">Add +</button>
+           <button class="add-btn">Add +</button>
          
         </div>
       </div>
     </div>
 
   </section>
-  <script src="home.js"></script>
+   <div class="bottom-nav">
+  <div class="nav-item">
+    <i class="fas fa-bars"></i>
+   <a href="home.html"> <span>Menu</span></a>
+  </div>
+  <div class="nav-item">
+    <i class="fas fa-percentage"></i>
+   <a href="offer.html"> <span>Offers</span></a>
+  </div>
+  <button class="view-cart">
+    <a href="cart.html">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count">0</span>
+    <span class="text">View Cart</span>
+    <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>
+  </button>
+</div>
+<script>
+  // Auto-scroll for "What's New" section
+  const newItemsContainer = document.querySelector('.new-items');
+
+  let scrollAmount = 0;
+  const scrollStep = 1; // pixels per interval
+  const scrollDelay = 10; // interval time (ms)
+
+  function autoScroll() {
+    if (!newItemsContainer) return;
+    scrollAmount += scrollStep;
+    newItemsContainer.scrollLeft += scrollStep;
+
+    // Reset scroll to start when fully scrolled
+    if (
+      newItemsContainer.scrollLeft + newItemsContainer.clientWidth >=
+      newItemsContainer.scrollWidth
+    ) {
+      scrollAmount = 0;
+      newItemsContainer.scrollLeft = 0;
+    }
+  }
+
+  setInterval(autoScroll, scrollDelay);
+
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function updateCartCount() {
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCount = document.querySelector(".cart-count");
+    if (cartCount) cartCount.textContent = totalCount;
+  }
+
+  function addToCart(item) {
+    const index = cart.findIndex(i => i.name === item.name);
+    if (index !== -1) {
+      cart[index].quantity += 1;
+    } else {
+      cart.push({ ...item, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  document.querySelectorAll(".add-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".product-card");
+      const name = card.querySelector("h3")?.innerText?.trim();
+      const priceText = card.querySelector(".price strong")?.innerText;
+      const price = parseInt(priceText.replace("₹", "").trim());
+      const image = card.querySelector("img")?.src;
+
+      if (!name || isNaN(price) || !image) return;
+
+      addToCart({ name, price, image });
+
+      btn.textContent = "Added ✓";
+      btn.classList.add("active");
+      setTimeout(() => {
+        btn.textContent = "Add +";
+        btn.classList.remove("active");
+      }, 1500);
+    });
+  });
+
+  updateCartCount();
+
+
+</script>
+<script src="home.js"></script>
 </body>
 </html>

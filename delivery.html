@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Location</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+    }
+
+    .location-container {
+      background: white;
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .search-bar i {
+      margin-right: 10px;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .search-bar input {
+      border: none;
+      flex-grow: 1;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #suggestions {
+      position: absolute;
+      top: 45px;
+      left: 40px;
+      right: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 0 0 5px 5px;
+      z-index: 10;
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    #suggestions div {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    #suggestions div:hover {
+      background-color: #f0f0f0;
+    }
+
+    .location-banner {
+      background-color: #005bac;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+
+    .location-banner i {
+      margin-right: 10px;
+    }
+
+    .detect-btn {
+      background-color: #005bac;
+      border: 1px solid white;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #userLocation {
+      margin: 10px 0;
+      font-size: 15px;
+      color: #005bac;
+    }
+
+    .recently-searched {
+      margin-top: 20px;
+    }
+
+    .recently-searched h4 {
+      margin-bottom: 5px;
+    }
+
+    .clear {
+      color: #005bac;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="location-container">
+    <div class="search-bar">
+      <i class="fas fa-arrow-left" onclick="goBack()"></i>
+      <input type="text" id="searchInput" placeholder="Search for your delivery location" autocomplete="off" />
+      <i class="fas fa-search"></i>
+      <div id="suggestions"></div>
+    </div>
+
+    <div id="userLocation"></div>
+
+    <div class="location-banner">
+      <span><i class="fas fa-map-marker-alt"></i> Give us your exact location for seamless delivery</span>
+      <button class="detect-btn" onclick="detectLocation()">Detect location</button>
+    </div>
+
+    <div class="recently-searched">
+      <h4>Recently Searched <span class="clear" onclick="clearSearch()">Clear</span></h4>
+    </div>
+  </div>
+
+ <script>
+  const apiKey = "ce658ddd36f440f88f7b854b8a156a8c";
+  const searchInput = document.getElementById("searchInput");
+  const suggestions = document.getElementById("suggestions");
+  const locationDiv = document.getElementById("userLocation");
+
+  function goBack() {
+    window.location.href = "home.html";
+  }
+
+  function clearSearch() {
+    localStorage.removeItem("deliveryAddress");
+    locationDiv.textContent = "";
+  }
+
+  function detectLocation() {
+    locationDiv.innerText = "Detecting location...";
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      locationDiv.innerText = "Geolocation is not supported.";
+    }
+  }
+
+  async function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    const res = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${apiKey}`);
+    const data = await res.json();
+    const c = data.results[0].components;
+
+    const address = `${c.house_number || ''} ${c.road || ''}, ${c.suburb || ''}, ${c.city || c.town || ''}, ${c.state || ''}, ${c.postcode || ''}, ${c.country || ''}`.replace(/\s+/g, ' ').trim();
+
+    locationDiv.innerHTML = "📍 <b>" + address + "</b>";
+    localStorage.setItem("deliveryAddress", address);
+  }
+
+  function showError(error) {
+    locationDiv.innerText = "Error fetching your location.";
+  }
+
+  // 🔍 Search Suggestions
+  searchInput.addEventListener("input", async () => {
+    const query = searchInput.value.trim();
+    suggestions.innerHTML = "";
+    if (query.length < 3) return;
+
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(query)}&key=${apiKey}&limit=5`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    data.results.forEach(item => {
+      const fullAddress = item.formatted;
+      const div = document.createElement("div");
+      div.textContent = fullAddress;
+      div.onclick = () => {
+        searchInput.value = fullAddress;
+        locationDiv.innerHTML = "📍 <b>" + fullAddress + "</b>";
+        localStorage.setItem("deliveryAddress", fullAddress);
+        suggestions.innerHTML = "";
+      };
+      suggestions.appendChild(div);
+    });
+  });
+
+  // Close suggestions if clicked outside
+  document.addEventListener("click", e => {
+    if (!suggestions.contains(e.target) && e.target !== searchInput) {
+      suggestions.innerHTML = "";
+    }
+  });
+</script>
+</body>
+</html>
