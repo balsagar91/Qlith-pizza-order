@@ -313,3 +313,21 @@ button:hover {
 .price-box button:hover {
   background: #e64a19;
 }
+.extras-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+}
+
+.extras-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.extras-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.extras-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}

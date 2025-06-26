@@ -60,11 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCart();
   };
 
-  window.placeOrder = () => {
-    alert("Order placed successfully!");
-    localStorage.removeItem("cart");
-    renderCart();
-  };
 
   renderCart();
 });

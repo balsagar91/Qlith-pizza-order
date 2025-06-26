@@ -357,5 +357,16 @@ function updateCartCount() {
 
   updateCartCount();
   initButtons();
+  const cravingContainer = document.querySelector('.craving-container');
+  let scrollStep = 1;
 
+  function autoScrollCraving() {
+    if (!cravingContainer) return;
+    cravingContainer.scrollLeft += scrollStep;
+    if (cravingContainer.scrollLeft + cravingContainer.clientWidth >= cravingContainer.scrollWidth) {
+      cravingContainer.scrollLeft = 0;
+    }
+  }
+
+  setInterval(autoScrollCraving, 20);
 
