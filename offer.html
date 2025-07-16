@@ -168,6 +168,12 @@ body {
     </div>
   </div>
 </main>
-
+<script>
+  function applyOffer(discount, minAmount) {
+    localStorage.setItem("selectedOffer", JSON.stringify({ discount, minAmount }));
+    alert(`Offer Applied: ₹${discount} off on minimum ₹${minAmount}`);
+    window.location.href = "cart.html"; // Go back to cart
+  }
+</script>
 </body>
 </html>
